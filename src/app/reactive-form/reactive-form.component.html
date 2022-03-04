@@ -1,0 +1,31 @@
+<br/><br/>
+<div class="container">
+    <h1>Form Reactive</h1>
+    <label for="name">Name: </label>
+    <input id="name" type="text" [formControl]="name">
+    <p>Value: {{ name.value }}</p>
+    <button type="button" (click)="updateName()">Update Name</button>
+
+
+
+
+
+    <h1>Form Reactive 2</h1>
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+        <label for="first-name">First Name: </label>
+        
+        <input type="text" formControlName="firstName" required>
+        <span *ngIf="profileForm.value.firstName==''" >* cần phải nhập tên</span>
+
+
+        <br>
+        <label for="last-name">Last Name: </label>
+        <input  type="text" formControlName="lastName" required>
+
+        <span *ngIf="profileForm.value.lastName==''" >* cần phải nhập họ</span>
+
+        <p>Complete the form to enable button.</p>
+        <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+      </form>
+</div>    

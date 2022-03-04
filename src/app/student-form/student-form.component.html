@@ -1,0 +1,51 @@
+
+<div class="container">
+    <h1>Sinh Viên Form </h1>
+   
+
+
+
+    <form class="example-form" [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+
+  
+
+        <label for="first-name">First Name: </label>
+        <input type="text" formControlName="firstName" required>
+        <span *ngIf="studentForm.value.firstName==''" >* cần phải nhập tên</span>
+
+
+
+        <br>
+        <label for="last-name">Last Name: </label>
+        <input  type="text" formControlName="lastName" required>
+        <span *ngIf="studentForm.value.lastName==''" >* cần phải nhập họ</span>
+
+        <br>
+        <label for="code">Code: </label>
+        <input  type="text" formControlName="code" required>
+        <span *ngIf="studentForm.value.code==''" >* cần phải nhập code</span>
+
+        <br>
+        <label for="gender">gender: </label>
+        <input  type="text" formControlName="gender" required>
+        <span *ngIf="studentForm.value.gender==''" >* cần phải nhập gender</span>
+
+        <br>
+        <label for="dob">dob: </label>
+        <input  type="text" formControlName="dob" required>
+        <span *ngIf="studentForm.value.dob==''" >* cần phải nhập dob</span>
+
+        <br>
+        <label for="email">email: </label>
+        <input  type="text" formControlName="email" required>
+        <span *ngIf="studentForm.value.email==''" >* cần phải nhập email</span>
+
+        <br>
+        <label for="phone">phone: </label>
+        <input  type="text" formControlName="phone" required>
+        <span *ngIf="studentForm.value.phone==''" >* cần phải nhập phone</span>
+        <br>
+        <button type="submit" [disabled]="!studentForm.valid">Lưu</button>
+
+      </form>
+</div>    

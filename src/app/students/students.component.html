@@ -1,0 +1,34 @@
+
+
+<div>
+  <button mat-raised-button color="primary" (click)="AddStudent()">
+    <mat-icon>add_box</mat-icon>
+    Thêm sinh viên
+  </button>
+  <table id="customers">
+    <tr>
+      <th>Id</th>
+      <th>Code</th>
+      <th>Gender</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Hành động</th>
+    </tr>
+    <tr *ngFor="let student of students">
+      <td>{{student?.id}}</td>
+      <td>{{student?.code}}</td>
+      <td>{{student?.gender}}</td>
+      <td>{{student?.firstName}}</td>
+      <td>{{student?.lastName}}</td>
+      <td>{{student?.email}}</td>
+      <td>{{student?.phone}}</td>
+      <td>
+        <mat-icon (click)="deleteStudent(student.id)">clear</mat-icon>
+        <mat-icon (click)="updateStudent(student.id)">cached</mat-icon>
+      </td>
+    </tr>
+  </table>
+
+</div>
