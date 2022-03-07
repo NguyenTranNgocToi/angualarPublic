@@ -13,7 +13,7 @@ export class ServerHttpsService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   private REST_API_SERVER ='http://localhost:3000';
-
+  private REST_API_SERVER_SPRING ='http://localhost:8080/demo3/api';
   constructor(private httpClient: HttpClient) { }
 
   private handleError(error: HttpErrorResponse) {
@@ -53,38 +53,73 @@ export class ServerHttpsService {
                           .post<any>(url,data, this.httpOptions)
                           .pipe(catchError(this.handleError));
   } 
+
+
+  // student fake json
+  // public getStudent(): Observable<any>{
+  //   const url=`${this.REST_API_SERVER}/students`;
+  //   return this.httpClient
+  //                         .get<any>(url, this.httpOptions)
+  //                         .pipe(catchError(this.handleError));
+  // } 
+  // public addStudent(data: Student){
+  //   const url=`${this.REST_API_SERVER}/students`;
+  //   return this.httpClient
+  //                         .post<any>(url,data, this.httpOptions)
+  //                         .pipe(catchError(this.handleError));
+  // } 
+
+  // public deleteStudent(id) {
+  //   const url=`${this.REST_API_SERVER}/students/`+id;
+  //   return this.httpClient
+  //                         .delete<any>(url)
+  //                         .pipe(catchError(this.handleError));
+  // }
+  // public getStudentById(id): Observable<any>{
+  //   const url=`${this.REST_API_SERVER}/students/`+id;
+  //   return this.httpClient
+  //                         .get<any>(url, this.httpOptions)
+  //                         .pipe(catchError(this.handleError));
+  // } 
+
+  // public  UpdateStudent(id: number,data: Student){
+  //   const url=`${this.REST_API_SERVER}/students/`+id;
+  //   return this.httpClient
+  //                         .put<any>(url,data, this.httpOptions)
+  //                         .pipe(catchError(this.handleError));
+  // } 
+  //api spring
   public getStudent(): Observable<any>{
-    const url=`${this.REST_API_SERVER}/students`;
+    const url=`${this.REST_API_SERVER_SPRING}/students`;
     return this.httpClient
                           .get<any>(url, this.httpOptions)
                           .pipe(catchError(this.handleError));
   } 
   public addStudent(data: Student){
-    const url=`${this.REST_API_SERVER}/students`;
+    const url=`${this.REST_API_SERVER_SPRING}/students`;
     return this.httpClient
                           .post<any>(url,data, this.httpOptions)
                           .pipe(catchError(this.handleError));
   } 
-  /**
-   * deleteStudent
-id   */
+
   public deleteStudent(id) {
-    const url=`${this.REST_API_SERVER}/students/`+id;
+    const url=`${this.REST_API_SERVER_SPRING}/students/`+id;
     return this.httpClient
                           .delete<any>(url)
                           .pipe(catchError(this.handleError));
   }
   public getStudentById(id): Observable<any>{
-    const url=`${this.REST_API_SERVER}/students/`+id;
+    const url=`${this.REST_API_SERVER_SPRING}/students/`+id;
     return this.httpClient
                           .get<any>(url, this.httpOptions)
                           .pipe(catchError(this.handleError));
   } 
 
   public  UpdateStudent(id: number,data: Student){
-    const url=`${this.REST_API_SERVER}/students/`+id;
+    const url=`${this.REST_API_SERVER_SPRING}/students/`+id;
     return this.httpClient
                           .put<any>(url,data, this.httpOptions)
                           .pipe(catchError(this.handleError));
   } 
+  
 }

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Student } from '../models/Student';
 import { CommonService } from '../Services/common.service';
 import { ServerHttpsService } from '../Services/server-https.service';
+import { HttpClient } from '@angular/common/http';
+
 
 
 @Component({
@@ -12,9 +14,13 @@ import { ServerHttpsService } from '../Services/server-https.service';
 })
 export class StudentsComponent implements OnInit {
   public students: Student[]= [];
+  readonly APP_URL = 'http://localhost:8080/demo3/api';
+  myresponse: any;
+  
   constructor(private common: CommonService, 
               private serverHttp: ServerHttpsService,
-              private router: Router) { 
+              private router: Router,
+              private _http: HttpClient) { 
 
     }
 
@@ -42,6 +48,15 @@ export class StudentsComponent implements OnInit {
       console.log(data);
       this.students= data;
     });
+    // this._http.get(this.APP_URL + '/students').subscribe(
+    //   data => {
+    //     this.myresponse = data;
+    //     console.log("my response",this.myresponse );
+    //   },
+    //   error => {
+    //     console.log('Error occured', error);
+    //   }
+    // );
   }
 
   /**
