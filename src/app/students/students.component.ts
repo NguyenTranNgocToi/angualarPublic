@@ -35,10 +35,18 @@ export class StudentsComponent implements OnInit {
    */
   public deleteStudent(id){
     console.log("xóa sinh viên",id );
+    
     this.serverHttp.deleteStudent(id).subscribe((data)=>{
+      this.serverHttp.getStudent().subscribe((data)=>{
+        console.log(data);
+        this.students= data;
+      });
       console.log("delete data",data);
+    
     });
-    this.loadData();
+
+    
+      
   }
   /**
    * loadData

@@ -13,7 +13,8 @@ export class ServerHttpsService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   private REST_API_SERVER ='http://localhost:3000';
-  private REST_API_SERVER_SPRING ='http://localhost:8080/demo3/api';
+  // private REST_API_SERVER_SPRING ='http://localhost:8080/demo3/api';
+  private REST_API_SERVER_SPRING ='http://localhost:8080/Spring/api';
   constructor(private httpClient: HttpClient) { }
 
   private handleError(error: HttpErrorResponse) {
@@ -24,7 +25,8 @@ export class ServerHttpsService {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.
       console.error(
-        `Backend returned code ${error.status}, body was: `, error.error);
+         `Backend returned code ${error.status}, body was: `, error.error);
+      
     }
     // Return an observable with a user-facing error message.
     return throwError(() => new Error('Something bad happened; please try again later.'));
@@ -107,6 +109,7 @@ export class ServerHttpsService {
     return this.httpClient
                           .delete<any>(url)
                           .pipe(catchError(this.handleError));
+                  
   }
   public getStudentById(id): Observable<any>{
     const url=`${this.REST_API_SERVER_SPRING}/students/`+id;
